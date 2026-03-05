@@ -1,0 +1,461 @@
+@import '@arco-design/web-react/dist/css/arco.css';
+@import "tailwindcss";
+
+/* ===== Mindtrip Design System + Original Brand Colors ===== */
+
+/* ===== Custom Theme Tokens ===== */
+@theme inline {
+  /* Original Brand Colors - Gold/Luxury Theme */
+  --color-brand: #c3b07d;
+  --color-brand-light: #d6c295;
+  --color-brand-dark: #b59b5d;
+  --color-brand-bg: #fcfaf6;
+  --color-brand-hover: #e2d0ac;
+  
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  
+  /* Neutral Colors */
+  --color-bg: #fcfaf6;
+  --color-surface: #ffffff;
+  --color-border: #e8e4dc;
+  --color-muted: #a39b8b;
+  --color-text: #2c2416;
+  --color-text-secondary: #6b6252;
+  
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(44, 36, 22, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(44, 36, 22, 0.08), 0 2px 4px -2px rgba(44, 36, 22, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(44, 36, 22, 0.08), 0 4px 6px -4px rgba(44, 36, 22, 0.06);
+  --shadow-xl: 0 20px 25px -5px rgba(44, 36, 22, 0.08), 0 8px 10px -6px rgba(44, 36, 22, 0.06);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-default: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Light Mode (default) ===== */
+:root {
+  --background: #fcfaf6;
+  --foreground: #2c2416;
+  --surface: #ffffff;
+  --border: #e8e4dc;
+  --muted: #a39b8b;
+  
+  /* Arco Design overrides for gold theme */
+  --arcoblue-6: #c3b07d;
+  --arcoblue-5: #d6c295;
+  --arcoblue-7: #b59b5d;
+  --arcoblue-4: #e2d0ac;
+  --arcoblue-3: #ede4d3;
+  --arcoblue-2: #f5f0e6;
+  --arcoblue-1: #fcfaf6;
+}
+
+/* ===== Dark Mode ===== */
+[data-theme="dark"] {
+  --background: #1a1712;
+  --foreground: #f5f0e6;
+  --surface: #2c2416;
+  --border: #3d3426;
+  --muted: #8b806d;
+  
+  --arcoblue-6: #d6c295;
+  --arcoblue-5: #e2d0ac;
+  --arcoblue-7: #c3b07d;
+  
+  --color-brand: #d6c295;
+  --color-brand-light: #e2d0ac;
+  --color-brand-dark: #c3b07d;
+  --color-brand-bg: #1a1712;
+  --color-brand-hover: #b59b5d;
+}
+
+/* ===== Base Styles ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-default), color var(--transition-default);
+}
+
+/* ===== Typography Utilities ===== */
+.text-display {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-title {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.text-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-heading {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.text-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-small {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-caption {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* ===== Animation Utilities ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes typing {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Typing indicator animation */
+.typing-dot {
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* ===== Glass Effect ===== */
+.glass {
+  background: rgba(252, 250, 246, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(26, 23, 18, 0.9);
+}
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Arco Design Overrides ===== */
+.arco-btn-primary {
+  background-color: var(--color-brand) !important;
+  border-color: var(--color-brand) !important;
+  border-radius: var(--radius-full) !important;
+  font-weight: 500 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.arco-btn-primary:hover {
+  background-color: var(--color-brand-light) !important;
+  border-color: var(--color-brand-light) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.arco-btn-primary:active {
+  background-color: var(--color-brand-dark) !important;
+  border-color: var(--color-brand-dark) !important;
+  transform: translateY(0);
+}
+
+.arco-btn-secondary {
+  border-radius: var(--radius-full) !important;
+  font-weight: 500 !important;
+}
+
+.arco-input {
+  border-radius: var(--radius-full) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.arco-input:focus {
+  border-color: var(--color-brand) !important;
+  box-shadow: 0 0 0 3px rgba(195, 176, 125, 0.15) !important;
+}
+
+/* ===== Card Styles ===== */
+.card-hover {
+  transition: all var(--transition-default);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ===== Button Styles ===== */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  background: var(--color-brand);
+  color: white;
+  border-color: var(--color-brand);
+}
+
+/* ===== Map Marker ===== */
+.map-marker {
+  width: 16px;
+  height: 16px;
+  background: var(--color-brand);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(195, 176, 125, 0.4);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ===== Day Timeline ===== */
+.day-timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.day-timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-brand), var(--color-brand-light));
+  border-radius: 1px;
+}
+
+.day-marker {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--surface);
+  border: 2px solid var(--color-brand);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* ===== Chat Styles ===== */
+.chat-bubble-user {
+  background: var(--color-brand);
+  color: white;
+  border-radius: 16px 16px 4px 16px;
+  padding: 16px;
+  max-width: 80%;
+}
+
+.chat-bubble-ai {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px 16px 16px 4px;
+  padding: 16px;
+  max-width: 80%;
+}
+
+/* ===== Focus States ===== */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-brand);
+  color: white;
+}
+
+/* ===== Hide Scrollbar but keep functionality ===== */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
