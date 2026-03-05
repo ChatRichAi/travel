@@ -296,7 +296,7 @@ export default function ChatPageComponent() {
         onSelect={setActiveConvId}
         onCreate={handleCreateConversation}
         onDelete={handleDeleteConversation}
-        onCreateItinerary={() => setShowCreateModal(true)}
+
         loading={loadingConvs}
         generatingItinerary={showItineraryView}
       />

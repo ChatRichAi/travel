@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Input, Button, Empty } from "@arco-design/web-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch, faTrash, faMessage, faRoute } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +19,6 @@ interface ChatSidebarProps {
   onSelect: (id: number) => void;
   onCreate: () => void;
   onDelete: (id: number) => void;
-  onCreateItinerary?: () => void;
   loading?: boolean;
   generatingItinerary?: boolean;
 }
@@ -29,7 +29,6 @@ export default function ChatSidebar({
   onSelect,
   onCreate,
   onDelete,
-  onCreateItinerary,
   loading,
   generatingItinerary,
 }: ChatSidebarProps) {
@@ -52,17 +51,16 @@ export default function ChatSidebar({
         >
           新建对话
         </Button>
-        {onCreateItinerary && (
+        <Link href="/create-trip" className="block">
           <Button
             type="outline"
             long
             icon={<FontAwesomeIcon icon={faRoute} />}
-            onClick={onCreateItinerary}
-            className="!text-[var(--color-brand)] !border-[var(--color-brand)] hover:!bg-[var(--color-brand-bg)]"
+            className="!text-[var(--color-brand)] !border-[var(--color-brand)] hover:!bg-[var(--color-brand-bg)] w-full"
           >
             创建新行程
           </Button>
-        )}
+        </Link>
       </div>
 
       {/* Search */}
